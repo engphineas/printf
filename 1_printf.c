@@ -12,9 +12,16 @@
 int printing_char(va_list types, char buffer[], int flags,
 int width, int precision, int size) /*line broken cz was too long*/
 {
-char c = va_arg(types, int);
+char c;
+UNUSED(buffer);
+UNUSED(flags);
+UNUSED(width);
+UNUSED(precision);
+UNUSED(size);
 
-return (write_char(c, buffer, flags, width, precision, size));
+c = va_arg(types, int);
+
+return (write(1, &c, 1));
 }
 /**
 * printing_string - Prints a string
@@ -91,49 +98,23 @@ UNUSED(precision);
 UNUSED(size);
 return (write(1, "%%", 1));
 }
-
+/*converting size number*/
 /**
-*printing_int - a function to print integer
-*@types:args list
-*@buffer:an array to handle print
-*@flags:placeholder varaible for flags calculated
-*@width:placeholder varaible for width
-*@precision:placeholder variable for precision
-*@size:placeholder varaible for size
-*Return:returns total number of characters printed
-**/
-int printing_int(va_list types, char buffer[], int flags,
-int width, int precision, int size)/*line broken cz was too long*/
+*size_number- function to cast a number to a specified size
+*@num: placeholder of number to be casted
+*@size: placeholder of size
+*Return: the value casted
+*/
+long int size_number(long int n, int size)
 {
-int i = BUFFER_SIZE - 2;
-int is_negative = 0;
-long int x = va_arg(types, long int);
-unsigned long int num;
+if (size == _LONG)
+	return (n);
 
-x = size_number(x, size);
-
-if (x == 0)
-buffer[i--] = '0';
-
-buffer[BUFFER_SIZE - 1] = '\0';
-num = (unsigned long int)x;
-
-if (x < 0)
-{
-num = (unsigned long int)((-1) * x);
-is_negative = 1;
+else if (size == _SHORT)
+	return ((short)n);
+return ((int)n);
 }
 
-while (num > 0)
-{
-buffer[i--] = (num % 10) + '0';
-num /= 10;
-}
-
-i++;
-
-return (write_number(is_negative, i, buffer, flags, width, precision, size));
-}
 
 /**
 *printing_binary - function to print binary
@@ -159,7 +140,7 @@ UNUSED(precision);
 UNUSED(size);
 
 x = va_arg(types, unsigned int);
-y = 2147483647;/** unsigned int is a 32 bit datatum hence (2 ^ 31) - 1*/
+y = 2147483648;/** unsigned int is a 32 bit datatum hence (2 ^ 31) - 1*/
 a[0] = x / y;
 for (i = 1; i < 32; i++)
 {
