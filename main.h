@@ -1,5 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
+#define UNUSED(x) (void)(x)
+#define F_MIN 1
+#define BUFFER_SIZE 1024
 #include<stdarg.h>
 #include<stdio.h>
 #include<unistd.h>
