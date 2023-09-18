@@ -21,9 +21,5 @@ int get_width(const char *format, int *i, va_list list);
 int get_precision(const char *format, int *i, va_list list);
 int get_size(const char *format, int *i);
 
-int write_number(int is_positive, int ind, char buffer[], int flags,
-int width, int precision, int size);
-int write_char(char c, char buffer[], int flags,
-int width, int precision, int size);
-long int size_number(long int num, int size);
+
 #endif
