@@ -3,6 +3,8 @@
 #define UNUSED(i) (void)(i)
 #define F_MIN 1
 #define BUFFER_SIZE 1024
+#define _LONG 2
+#define _SHORT 1
 #include<stdarg.h>
 #include<stdio.h>
 #include<unistd.h>
@@ -21,5 +23,5 @@ int get_width(const char *format, int *i, va_list list);
 int get_precision(const char *format, int *i, va_list list);
 int get_size(const char *format, int *i);
 
-
+long int size_number(long int num, int size);
 #endif
