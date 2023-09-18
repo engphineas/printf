@@ -2,7 +2,7 @@
 /**
  * _printf - The function produces output according to the format
  * @format: format of character string
- * return: returns printed characters or -1 for error
+ * Return: returns printed characters or -1 for error
  */
 int _printf(const char *format, ...)
 {
@@ -32,7 +32,6 @@ int _printf(const char *format, ...)
 			else if (*format == 'c')
 			{
 				char character = va_arg(chars_args, int);
-
 				write(1, &character, 1);
 				printed_char++;
 			}
