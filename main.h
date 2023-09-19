@@ -15,6 +15,7 @@ int (*function)(va_list args);
 }fmt_spec;
 int write_handler(char c);
 int _printf(const char *format, ...);
+<<<<<<< HEAD
 int printf(const char *format, ...);
 int _print_format(const char *format, va_list args);
 int printf_format_specifier(const char *format, va_list char_args);
@@ -24,4 +25,6 @@ int string(va_list char_args);
 int character(va_list int_args);
 int check_specifier(char char_initial, char format, int length);
 int check_char(char specified_char);
+=======
+>>>>>>> 1eddce3eb672f4de78e651f1a5f2f61b25a2ee6a
 #endif
